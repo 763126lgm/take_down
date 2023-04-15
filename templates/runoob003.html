@@ -1,0 +1,30 @@
+{% extends '主模板.html' %}
+{% block mainbody %}<p>打开第一次对话</p>{% endblock  %}
+{% block xigaibody %}
+<h3>顺序获取循环序号，从0开始计算</h3>
+{% for i,x in name_lis.items %}
+{{forloop.counter0}}{{i}}------{{x}}<br>
+{% endfor %}
+<h3>顺序获取循环序号，从1开始计算</h3>
+{% for i,x in name_lis.items %}
+{{forloop.counter}}{{i}}------{{x}}<br>
+{% endfor %}
+<h3>倒序获取循环序号，结尾序号为1</h3>
+{% for i,x in name_lis.items %}
+{{forloop.revcounter}}{{i}}------{{x}}<br>
+{% endfor %}
+<h3>倒序获取循环序号，结尾序号为0</h3>
+{% for i,x in name_lis.items %}
+{{forloop.revcounter0}}{{i}}------{{x}}<br>
+{% endfor %}
+<h3>第一条数据返回True，其它数据返回False</h3>
+{% for i,x in name_lis.items %}
+{{forloop.first}}{{i}}------{{x}}<br>
+{% endfor %}
+<h3>最后一条数据返回True，其它数据返回False</h3>
+{% for i,x in name_lis.items %}
+{{forloop.last}}{{i}}------{{x}}<br>
+{% endfor %}
+{% load static %}
+<img src="{% static 'img/d.jpg' %}" alt='wath on'>
+{% endblock  %}

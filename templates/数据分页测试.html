@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>数据分页测试</title>
+    </head>
+    <body>
+        <a href='/down_csv?pasg={{pag_page.number}}'>生成csv文件</a>
+        <!--遍历已分页好的数据对象类型，显示分组后当前页的数据-->
+        {% for pags in pag_page %}
+        <p>{{pags}}</p>
+        {% endfor %}
+        
+
+        <!--给“上一页”赋予超链接，如果上一页存在则赋予超链接，否则只是普通文字“上一页”-->
+        {% if pag_page.has_previous %}
+        <!--has_previous属性判断上一页是否存在，存在则返回True-->
+        <a href='/test_mu?pasg={{pag_page.previous_page_number}}'>上一页</a>
+        <!--特别注意有参数的url中的“？”两边不能有空格，previous_page_number属性返回上一页页码，如果上一页不存在则引发InvalidPage-->
+        {% else %}
+        上一页
+        {% endif %}
+
+        <!--页码显示，page_range是一个已分配好的保存页码的可迭代对象-->
+        {% for ran_pag in pag.page_range %}
+        {% if ran_pag == pag_pags.number %}
+        <!--.number属性返回当前页页码-->
+        {{ran_pag}}
+        {% else %}
+        <a href='/test_mu?pasg={{ran_pag}}'>{{ran_pag}}</a>
+        {% endif %}
+        {% endfor %}
+
+        <!--.has_next判断下一页是否存在，.next_page_number返回下一页的页码-->
+        {% if pag_page.has_next %}
+        <a href='/test_mu?pasg={{pag_page.next_page_number}}'>下一页</a>
+        {% else %}
+        下一页
+        {% endif %}
+    </body>
+</html>

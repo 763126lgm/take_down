@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>年级名单表</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div>
+            <a href='add'>
+                <input type='button' value='添加信息'>
+            </a>
+        </div>
+        <table border='1'>
+            <tr>
+                <th>班级</th>
+                <th>姓名</th>
+                <th>学号</th>
+                <th colspan='2'>操作</th>
+            </tr>
+            {% for jsd in sutdent %}
+            <tr>
+                <td>{{jsd.clase}}</td>
+                <td>{{jsd.names}}</td>
+                <td>{{jsd.stud_number}}</td>
+                <td><a href='update/{{jsd.id}}'>修改</a></td>
+                <td><a href='delect/{{jsd.id}}'>删除</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
